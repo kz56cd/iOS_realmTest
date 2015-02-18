@@ -9,99 +9,140 @@
 import UIKit
 //import Realm
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AddUserViewControllerDelegate {
     
-    
+    @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var nameSearchTextField: UITextField!
     @IBOutlet weak var logTextView: UITextView!
+
     let realm: RLMRealm = RLMRealm.defaultRealm()
+    private var notificationToken : RLMNotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.realmTest()
+        self.prepareRealm()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func realmTest() {
-        
-//        let realm = RLMRealm.defaultRealm()
-        println("defaultRealmPath: \(RLMRealm.defaultRealmPath())")  // DBファイルの場所
-
-        // Bookオブジェクト生成.
-//        let book = Book()
-//        book.isbn = "999999"
-//        book.name = "realm sample"
-//        book.price = 100
-//        
-//        // Bookオブジェクトを保存.
-//        realm.beginWriteTransaction()
-//        realm.addObject(book)
-//        realm.commitWriteTransaction()
-//
-//        let book2 = Book()
-//        book2.isbn = "999998"
-//        book2.name = "realm tutorial 1"
-//        book2.price = 1000
-//
-//        // Blockでの保存の仕方.
-//        realm.transactionWithBlock() {
-//            realm.addObject(book2)
-//        }
-        
-        
-        // ------------------------------- //
-        // 20件足す
-        
-//        var n = 1
-//        while n < 20 {
-//            // Bookオブジェクト生成.
-//            var book = Book()
-//            book.isbn = "\(111119 + n)"
-//            book.name = "realm sample_\(n)"
-//            book.price = 100
-//            
-//            // Bookオブジェクトを保存.
-//            realm.beginWriteTransaction()
-//            realm.addObject(book)
-//            realm.commitWriteTransaction()
-//            n++
-//        }
-        
-        var books: RLMResults = Book.allObjects()
-//        println(books)
-        
-        self.logTextView.text = "\(books)"
-        
-        for realmBook in books {
-            println("book name:\((realmBook as Book).name)")
-        }
-    }
+    
+    // MARK: - action -
     
     
+    /**
+    検索ボタン タップ時
+    */
     @IBAction func searchBtnTapped(sender: AnyObject) {
+        self.searchResultLabel.text = "result :"
+        
         var searchStr: String = self.nameSearchTextField.text
+        println("serach word : \(searchStr)")
         
-        println("検索キー:\(searchStr)")
-        
-        //
-        let results = Book.objectsWhere("name = '\(searchStr)'")
-        for realmBook in results {
-            println("search -> find book name:\((realmBook as Book).name)")
+        let results = User.objectsWhere("name = '\(searchStr)'")
+        for realmUser in results {
+            var log = "search -> find user name : \((realmUser as User).name)"
+            self.searchResultLabel.text = log
+            println(log)
         }
+    }
+    
+    /**
+    tempデータ追加ボタン タップ時
+    */
+    @IBAction func addTempDataBtnTapped(sender: AnyObject) {
         
+        // 20件足す
+        var n = 1
+        while n < 20 {
+            // Userオブジェクト生成.
+            var user = User()
+            user.name   = "sample_user_\(n)"
+            user.age    = 3 * n
+            user.gender = n % 2 == 0 ? "male" : "female"
+            self.addUser(user) // 追加
+            n++
+        }
+        self.showDBLog()
+        println("DONE : addTempData")
+    }
+    
+    /**
+    ユーザー追加ボタン タップ時
+    */
+    @IBAction func addUserBtnTapped(sender: AnyObject) {
+        // モーダル画面へ
+        var storyboard: UIStoryboard = UIStoryboard(name: "AddUser", bundle: nil)
+        var addUserViewController: AddUserViewController = storyboard.instantiateInitialViewController() as AddUserViewController
+        addUserViewController.delegate = self
+        self.presentViewController(addUserViewController, animated: true, completion: nil)
+    }
+    
+    /**
+    全ユーザー削除ボタン タップ時
+    */
+    @IBAction func deleteAllBtnTapped(sender: AnyObject) {
+        realm.beginWriteTransaction()
+        self.realm.deleteAllObjects()
+        realm.commitWriteTransaction()
+        self.showDBLog()
+        println("DONE : delleAll")
+    }
+    
+    
+    // MARK: - private methods -
+
+    
+    /**
+    DBログ画面表示
+    */
+    func showDBLog() {
+        var users: RLMResults = User.allObjects() // 全データ取得
+        self.logTextView.text = "\(users)"
+        for realmUser in users {
+//            println("users name : \((realmUser as User).name)")
+        }
+    }
+    
+    /**
+    realm準備
+    */
+    func prepareRealm() {
+        println("defaultRealmPath: \(RLMRealm.defaultRealmPath())")  // DBファイルの場所を表示
         
-//        // NSPredicate検索 -> 成功
-//        let results2 = Book.objectsWithPredicate(NSPredicate(format: "name = %@", "\(searchStr)"))
-//        for realmBook in results2 {
-//            // book name:realm tutorial 1
-//            println("book name:\((realmBook as Book).name)")
-//        }
+        self.notificationToken = realm.addNotificationBlock { note, realm in // 通知センターとの連携 (* この実装は任意でよい)
+            println("recieve Notif : \(note)")
+        }
+        self.showDBLog()
+    }
+    
+    /**
+    ユーザーの追加
+    */
+    func addUser(user: User) {
+// 追加 (通常)
+//        realm.beginWriteTransaction()
+//        realm.addObject(user)
+//        realm.commitWriteTransaction()
+        
+        // 追加 (Blocks)
+        self.realm.transactionWithBlock() {
+            self.realm.addObject(user)
+        }
     }
 
-
+    
+    // MARK: - AddUserViewController Delegate -
+    
+    
+    /**
+    追加するユーザーを受け取る
+    */
+    func recieveNewUser(user: User) {
+        println("WILL : add new user")
+        self.addUser(user)
+        self.showDBLog()
+    }
 }
 
