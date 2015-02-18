@@ -92,16 +92,6 @@ class ViewController: UIViewController {
         for realmBook in results {
             println("search -> find book name:\((realmBook as Book).name)")
         }
-        
-        
-//        // NSPredicate検索 -> 成功
-//        let results2 = Book.objectsWithPredicate(NSPredicate(format: "name = %@", "\(searchStr)"))
-//        for realmBook in results2 {
-//            // book name:realm tutorial 1
-//            println("book name:\((realmBook as Book).name)")
-//        }
     }
-
-
 }
 
