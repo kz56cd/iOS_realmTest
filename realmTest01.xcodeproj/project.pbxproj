@@ -14,9 +14,11 @@
 		BB0F6FD01A9328EC00C5185C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0F6FCF1A9328EC00C5185C /* Images.xcassets */; };
 		BB0F6FD31A9328EC00C5185C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0F6FD11A9328EC00C5185C /* LaunchScreen.xib */; };
 		BB0F6FDF1A9328EC00C5185C /* realmTest01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F6FDE1A9328EC00C5185C /* realmTest01Tests.swift */; };
-		BB2F1D9F1A932BB8009A5765 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2F1D9E1A932BB8009A5765 /* Book.swift */; };
 		BB2F1DA11A933036009A5765 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2F1DA01A933036009A5765 /* RLMSupport.swift */; };
 		BB2F1DA31A933085009A5765 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F1DA21A933085009A5765 /* libc++.dylib */; };
+		BB56DD3E1A94170C00DC7FFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56DD3D1A94170C00DC7FFE /* User.swift */; };
+		BB56DD421A9420A400DC7FFE /* AddUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56DD411A9420A400DC7FFE /* AddUser.storyboard */; };
+		BB56DD441A9421DA00DC7FFE /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +45,11 @@
 		BB0F6FDD1A9328EC00C5185C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0F6FDE1A9328EC00C5185C /* realmTest01Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realmTest01Tests.swift; sourceTree = "<group>"; };
 		BB2F1D991A932ACF009A5765 /* realmTest01-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realmTest01-Bridging-Header.h"; sourceTree = "<group>"; };
-		BB2F1D9E1A932BB8009A5765 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB2F1DA01A933036009A5765 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		BB2F1DA21A933085009A5765 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		BB56DD3D1A94170C00DC7FFE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BB56DD411A9420A400DC7FFE /* AddUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddUser.storyboard; sourceTree = "<group>"; };
+		BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		C546ED395F2A5684F94D77B8 /* Pods-realmTest01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realmTest01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-realmTest01/Pods-realmTest01.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,8 @@
 				BB0F6FD11A9328EC00C5185C /* LaunchScreen.xib */,
 				BB0F6FC61A9328EC00C5185C /* Supporting Files */,
 				BB2F1D991A932ACF009A5765 /* realmTest01-Bridging-Header.h */,
+				BB56DD411A9420A400DC7FFE /* AddUser.storyboard */,
+				BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */,
 			);
 			path = realmTest01;
 			sourceTree = "<group>";
@@ -151,7 +157,7 @@
 		BB2F1D9D1A932BA4009A5765 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB2F1D9E1A932BB8009A5765 /* Book.swift */,
+				BB56DD3D1A94170C00DC7FFE /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0F6FCE1A9328EC00C5185C /* Main.storyboard in Resources */,
+				BB56DD421A9420A400DC7FFE /* AddUser.storyboard in Resources */,
 				BB0F6FD31A9328EC00C5185C /* LaunchScreen.xib in Resources */,
 				BB0F6FD01A9328EC00C5185C /* Images.xcassets in Resources */,
 			);
@@ -291,9 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB56DD441A9421DA00DC7FFE /* AddUserViewController.swift in Sources */,
 				BB0F6FCB1A9328EC00C5185C /* ViewController.swift in Sources */,
 				BB0F6FC91A9328EC00C5185C /* AppDelegate.swift in Sources */,
-				BB2F1D9F1A932BB8009A5765 /* Book.swift in Sources */,
+				BB56DD3E1A94170C00DC7FFE /* User.swift in Sources */,
 				BB2F1DA11A933036009A5765 /* RLMSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
