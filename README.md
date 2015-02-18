@@ -1,5 +1,7 @@
 # iOS_realmTest
 
+wrote in the Swift lang.
+
 ## implemented Func
 
 - save data- search data- delete data- notification (if you change DB)
