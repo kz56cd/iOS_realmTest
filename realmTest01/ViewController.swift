@@ -11,7 +11,6 @@ import UIKit
 
 class ViewController: UIViewController, AddUserViewControllerDelegate {
     
-    @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var nameSearchTextField: UITextField!
     @IBOutlet weak var logTextView: UITextView!
     @IBOutlet weak var serachTypeSeg: UISegmentedControl!
@@ -36,22 +35,23 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
     検索ボタン タップ時
     */
     @IBAction func searchBtnTapped(sender: AnyObject) {
-        self.searchResultLabel.text = "result :"
         
         var searchStr: String = self.nameSearchTextField.text
         println("serach word : \(searchStr)")
         
-        // 検索条件の用意
-        var searchType: String = self.sortSearchType(self.serachTypeSeg.selectedSegmentIndex) // 検索対象
-        var query: String = searchType == "age" ? "\(searchType) = \(searchStr)" : "\(searchType) = '\(searchStr)'"  // （ageのみintなので）queryを調整
+        if searchStr.utf16Count != 0 {
         
-        // 検索スタート
-        let results = User.objectsWhere(query)
-        //var log = ""
-        for realmUser in results {
-            var log = "search -> find user : \((realmUser as User).name)"
-            self.searchResultLabel.text = log
-            println(log)
+            // 検索条件の用意
+            var searchType: String = self.sortSearchType(self.serachTypeSeg.selectedSegmentIndex) // 検索対象
+            var query: String = searchType == "age" ? "\(searchType) = \(searchStr)" : "\(searchType) = '\(searchStr)'"  // （ageのみintなので）queryを調整
+            
+            // 検索スタート
+            let results = User.objectsWhere(query)
+            var log = "\n"
+            for realmUser in results {
+                log = log + "find user : \((realmUser as User).name)\n"
+            }
+            self.showSearchResult(log) // 結果表示
         }
     }
     
@@ -68,6 +68,17 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
                 break
         }
         return str
+    }
+    
+    func showSearchResult(var result: String) {
+        result = result == "\n" ? "N/A" : result
+        
+        var alertController = UIAlertController(title: "search result", message: result, preferredStyle: .Alert)
+        let otherAction = UIAlertAction(title: "OK", style: .Default) {
+            action in println("alert close")
+        }
+        alertController.addAction(otherAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     /**
