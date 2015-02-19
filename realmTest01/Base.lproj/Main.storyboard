@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -62,14 +61,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iw-BV-JGG">
                                 <rect key="frame" x="0.0" y="278" width="320" height="290"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="db :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-52-NiC">
-                                        <rect key="frame" x="16" y="8" width="288" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiA-eF-cSw">
-                                        <rect key="frame" x="16" y="30" width="288" height="240"/>
+                                        <rect key="frame" x="15" y="15" width="290" height="260"/>
                                         <color key="backgroundColor" white="0.95038777372262773" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="0.2058622262773723" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -78,13 +71,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.79607843137254897" green="0.74901960784313726" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="RgA-52-NiC" firstAttribute="top" secondItem="9iw-BV-JGG" secondAttribute="topMargin" id="2d7-KF-k26"/>
-                                    <constraint firstItem="RgA-52-NiC" firstAttribute="leading" secondItem="9iw-BV-JGG" secondAttribute="leading" constant="16" id="7hh-uF-3OB"/>
-                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="top" secondItem="RgA-52-NiC" secondAttribute="bottom" constant="1" id="LWN-OB-1MQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="JiA-eF-cSw" secondAttribute="bottom" constant="20" id="VJQ-EB-aeV"/>
-                                    <constraint firstItem="RgA-52-NiC" firstAttribute="centerX" secondItem="9iw-BV-JGG" secondAttribute="centerX" id="VPX-Ra-yKs"/>
-                                    <constraint firstItem="RgA-52-NiC" firstAttribute="leading" secondItem="JiA-eF-cSw" secondAttribute="leading" id="VvJ-pQ-Hj0"/>
-                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="trailing" secondItem="RgA-52-NiC" secondAttribute="trailing" id="shC-7a-8TQ"/>
+                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="leading" secondItem="9iw-BV-JGG" secondAttribute="leading" constant="15" id="L6W-lm-yGd"/>
+                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="centerY" secondItem="9iw-BV-JGG" secondAttribute="centerY" id="eNk-TK-vz9"/>
+                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="centerX" secondItem="9iw-BV-JGG" secondAttribute="centerX" id="lSI-JO-9Ni"/>
+                                    <constraint firstItem="JiA-eF-cSw" firstAttribute="top" secondItem="9iw-BV-JGG" secondAttribute="top" constant="15" id="u73-kY-hVp"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gr2-2j-7J1">
