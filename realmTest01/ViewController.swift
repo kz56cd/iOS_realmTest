@@ -14,6 +14,7 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
     @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var nameSearchTextField: UITextField!
     @IBOutlet weak var logTextView: UITextView!
+    @IBOutlet weak var serachTypeSeg: UISegmentedControl!
 
     let realm: RLMRealm = RLMRealm.defaultRealm()
     private var notificationToken : RLMNotificationToken?
@@ -40,12 +41,33 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
         var searchStr: String = self.nameSearchTextField.text
         println("serach word : \(searchStr)")
         
-        let results = User.objectsWhere("name = '\(searchStr)'")
+        // 検索条件の用意
+        var searchType: String = self.sortSearchType(self.serachTypeSeg.selectedSegmentIndex) // 検索対象
+        var query: String = searchType == "age" ? "\(searchType) = \(searchStr)" : "\(searchType) = '\(searchStr)'"  // （ageのみintなので）queryを調整
+        
+        // 検索スタート
+        let results = User.objectsWhere(query)
+        //var log = ""
         for realmUser in results {
-            var log = "search -> find user name : \((realmUser as User).name)"
+            var log = "search -> find user : \((realmUser as User).name)"
             self.searchResultLabel.text = log
             println(log)
         }
+    }
+    
+    func sortSearchType(segtype: Int) -> String {
+        var str: String = ""
+        switch segtype {
+            case 0:
+                str = "name"
+            case 1:
+                str = "age"
+            case 2:
+                str = "gender"
+            default:
+                break
+        }
+        return str
     }
     
     /**

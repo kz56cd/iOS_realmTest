@@ -165,6 +165,7 @@
                         <outlet property="logTextView" destination="JiA-eF-cSw" id="hsk-Ki-mQY"/>
                         <outlet property="nameSearchTextField" destination="weV-00-lnf" id="gS5-d6-I3q"/>
                         <outlet property="searchResultLabel" destination="dUp-29-d4l" id="FT4-F3-LP0"/>
+                        <outlet property="serachTypeSeg" destination="2B3-WG-OkI" id="YYR-1K-rLk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
