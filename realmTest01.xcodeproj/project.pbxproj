@@ -14,8 +14,8 @@
 		BB0F6FD01A9328EC00C5185C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0F6FCF1A9328EC00C5185C /* Images.xcassets */; };
 		BB0F6FD31A9328EC00C5185C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0F6FD11A9328EC00C5185C /* LaunchScreen.xib */; };
 		BB0F6FDF1A9328EC00C5185C /* realmTest01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F6FDE1A9328EC00C5185C /* realmTest01Tests.swift */; };
-		BB2F1DA11A933036009A5765 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2F1DA01A933036009A5765 /* RLMSupport.swift */; };
 		BB2F1DA31A933085009A5765 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F1DA21A933085009A5765 /* libc++.dylib */; };
+		BB5061D91A957D2100E296B7 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5061D81A957D2100E296B7 /* RLMSupport.swift */; };
 		BB56DD3E1A94170C00DC7FFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56DD3D1A94170C00DC7FFE /* User.swift */; };
 		BB56DD421A9420A400DC7FFE /* AddUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56DD411A9420A400DC7FFE /* AddUser.storyboard */; };
 		BB56DD441A9421DA00DC7FFE /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */; };
@@ -45,8 +45,8 @@
 		BB0F6FDD1A9328EC00C5185C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0F6FDE1A9328EC00C5185C /* realmTest01Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realmTest01Tests.swift; sourceTree = "<group>"; };
 		BB2F1D991A932ACF009A5765 /* realmTest01-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realmTest01-Bridging-Header.h"; sourceTree = "<group>"; };
-		BB2F1DA01A933036009A5765 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		BB2F1DA21A933085009A5765 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		BB5061D81A957D2100E296B7 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		BB56DD3D1A94170C00DC7FFE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB56DD411A9420A400DC7FFE /* AddUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddUser.storyboard; sourceTree = "<group>"; };
 		BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
@@ -114,17 +114,14 @@
 		BB0F6FC51A9328EC00C5185C /* realmTest01 */ = {
 			isa = PBXGroup;
 			children = (
-				BB2F1DA01A933036009A5765 /* RLMSupport.swift */,
+				BB5061D61A957D2100E296B7 /* Utils */,
+				BB5061D51A957CB100E296B7 /* Resources */,
+				BB5061D41A957C8C00E296B7 /* ViewControllers */,
 				BB2F1D9D1A932BA4009A5765 /* Models */,
 				BB0F6FC81A9328EC00C5185C /* AppDelegate.swift */,
-				BB0F6FCA1A9328EC00C5185C /* ViewController.swift */,
-				BB0F6FCC1A9328EC00C5185C /* Main.storyboard */,
-				BB0F6FCF1A9328EC00C5185C /* Images.xcassets */,
 				BB0F6FD11A9328EC00C5185C /* LaunchScreen.xib */,
 				BB0F6FC61A9328EC00C5185C /* Supporting Files */,
 				BB2F1D991A932ACF009A5765 /* realmTest01-Bridging-Header.h */,
-				BB56DD411A9420A400DC7FFE /* AddUser.storyboard */,
-				BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */,
 			);
 			path = realmTest01;
 			sourceTree = "<group>";
@@ -160,6 +157,41 @@
 				BB56DD3D1A94170C00DC7FFE /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BB5061D41A957C8C00E296B7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB56DD431A9421DA00DC7FFE /* AddUserViewController.swift */,
+				BB0F6FCA1A9328EC00C5185C /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BB5061D51A957CB100E296B7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB0F6FCF1A9328EC00C5185C /* Images.xcassets */,
+				BB56DD411A9420A400DC7FFE /* AddUser.storyboard */,
+				BB0F6FCC1A9328EC00C5185C /* Main.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BB5061D61A957D2100E296B7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BB5061D71A957D2100E296B7 /* Realm */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BB5061D71A957D2100E296B7 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BB5061D81A957D2100E296B7 /* RLMSupport.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,9 +332,9 @@
 			files = (
 				BB56DD441A9421DA00DC7FFE /* AddUserViewController.swift in Sources */,
 				BB0F6FCB1A9328EC00C5185C /* ViewController.swift in Sources */,
+				BB5061D91A957D2100E296B7 /* RLMSupport.swift in Sources */,
 				BB0F6FC91A9328EC00C5185C /* AppDelegate.swift in Sources */,
 				BB56DD3E1A94170C00DC7FFE /* User.swift in Sources */,
-				BB2F1DA11A933036009A5765 /* RLMSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = realmTest01/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "realmTest01/realmTest01-Bridging-Header.h";
@@ -442,6 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = realmTest01/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "realmTest01/realmTest01-Bridging-Header.h";
