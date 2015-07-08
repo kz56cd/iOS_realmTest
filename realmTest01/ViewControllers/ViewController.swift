@@ -39,7 +39,8 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
         var searchStr: String = self.nameSearchTextField.text
         println("serach word : \(searchStr)")
         
-        if searchStr.utf16Count != 0 {
+//        if searchStr.utf16Count != 0 {
+        if count(searchStr) != 0 {
         
             // 検索条件の用意
             var searchType: String = self.sortSearchType(self.serachTypeSeg.selectedSegmentIndex) // 検索対象
@@ -49,7 +50,7 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
             let results = User.objectsWhere(query)
             var log = "\n"
             for realmUser in results {
-                log = log + "find user : \((realmUser as User).name)\n"
+                log = log + "find user : \((realmUser as! User).name)\n"
             }
             self.showSearchResult(log) // 結果表示
         }
@@ -107,7 +108,7 @@ class ViewController: UIViewController, AddUserViewControllerDelegate {
     @IBAction func addUserBtnTapped(sender: AnyObject) {
         // モーダル画面へ
         var storyboard: UIStoryboard = UIStoryboard(name: "AddUser", bundle: nil)
-        var addUserViewController: AddUserViewController = storyboard.instantiateInitialViewController() as AddUserViewController
+        var addUserViewController: AddUserViewController = storyboard.instantiateInitialViewController() as! AddUserViewController
         addUserViewController.delegate = self
         self.presentViewController(addUserViewController, animated: true, completion: nil)
     }

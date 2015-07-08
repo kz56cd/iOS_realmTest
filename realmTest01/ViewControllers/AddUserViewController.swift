@@ -47,7 +47,7 @@ class AddUserViewController: UIViewController {
     }
     
     @IBAction func ageSliderChanged(sender: AnyObject) {
-        var slider: UISlider = sender as UISlider
+        var slider: UISlider = sender as! UISlider
         self.ageLabel.text   = "\(roundf(slider.value))".stringByReplacingOccurrencesOfString(".0", withString: "", options: nil, range: nil) // 少数以下は四捨五入のち除外
     }
     
@@ -81,11 +81,10 @@ class AddUserViewController: UIViewController {
     func doPoorValidate() -> Bool {
 
         // 未入力チェックのみ
-        if self.nameTextField.text?.utf16Count == 0 ||
-        self.ageLabel.text?.utf16Count == 0 {
-            return false // エラー
+        if let str = self.nameTextField.text {
+            return count(str) != 0
         }
-        return true
+        return false
     }
     
     /**
